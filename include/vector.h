@@ -12,19 +12,26 @@ namespace vector{
     Vector<std::string, 3> will create a 3D vector of strings etc.*/
     template<typename T, int Dimension>
     class Vector {
-        // Below is TBC
         // private parameters that will not be changed
         private:
-            
+            T components[Dimension]; // Define array to store the components of the vector            
 
         // public accessible parameters
         public:
-        
-        
+            // Constructors
 
+            /* Allows for Vector command with no input variables to create a 
+            default vector if zeros (value defined in implementation file)*/
+            Vector();
 
-        
-
+            /* Allows for Vector command to parse Dimension numeber of type T 
+            input variables to create the vector of desired length.
+            Const prevents the function from altering the values during the execution*/
+            explicit Vector(const T values[Dimension]);
+            
+            /*Allow Vector command to parse an already defined Vector of the same size
+            in order to create a copy, without altering the original.*/
+            Vector(const Vector<T, Dimension>& other);
 
 
 
