@@ -2,7 +2,11 @@
 
 ## Overview
 
-A light weight 2D physics engine implemented in C++, designed for educational purposes and portfolio demonstration. The engine currently supports basic circular object physics including collision detection and response.
+A light weight physics engine implemented in C++, designed for educational purposes and portfolio demonstration. The engine currently supports basic circular object physics including collision detection and response.
+
+## Development Approach
+
+Some sections of the source code for this project contain extensive inline documentation, more than would be seen typically in production code. This is because one of the primary goals of this project is a personal learning exercise for C++ concepts and syntax. These extensive inline comments therefore serve the purpose of documenting my learning process. If this then also aids in the learning of other developers examining the project, that is an added bonus.
 
 ## Features
 
