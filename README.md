@@ -121,12 +121,7 @@ The project development is planned in several phases:
 - [ ] Scene saving and loading capabilities
 - [ ] Real-time physics property monitoring
 
-### Phase 3: Extended Features
-
-- [ ] Particle systems
-- [ ] Soft body physics
-- [ ] Performance optimisation
-- [ ] Multiple physics world support
+### Phase 3: To be Defined
 
 ## Feedback
 
