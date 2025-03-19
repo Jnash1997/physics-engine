@@ -20,12 +20,14 @@ namespace vector{
     class Vector {
         // private parameters that will not be changed
         private:
-            T components[Dimension]; // Define array to store the components of the vector            
+            T components[Dimension]; // Define array to store the components of the vector
 
         // public accessible parameters
         public:
-            /* Constructors 
-            Note that the Vector function is defined thrice. As all 3
+            // ======================================================================== //
+            // =============================== Constructors =========================== //
+            // ======================================================================== //
+            /*Note that the Vector function is defined thrice. As all 3
             instances of this function require different inputs, the 
             compiler is still able to differentiate between each of 
             these functions. This is called overloading the function.*/
@@ -56,6 +58,10 @@ namespace vector{
                     components[i] = other[i];
                 }
             };
+            
+            // ======================================================================== //
+            // ================================ Operators ============================= //
+            // ======================================================================== //
 
             /* Create a definition of the [] operator for our vector class.
             i.e. if we have an int vector vec, we could store the 1st value of that
@@ -80,8 +86,66 @@ namespace vector{
                 return components[index];
             }
 
+            /* Vector addition operator using +
+            Will return a Vector with the same dimensions and internal data type of the
+            objects used in the addition.  
+            `const Vector<T, Dimension>& other` allows + to take in a reference (&) to 
+            a second vector on the right hand side of the operator while ensuring that 
+            vector is not edited (const).
+            The const before the function implementation (within the {}) ensures the 
+            initial vector cannot itself be editted*/
+            Vector<T, Dimension> operator+(const Vector<T, Dimension>& other) const{
+                // Create output vector
+                Vector<T, Dimension> result;
+                // loop to add components
+                for(int i=0; i < Dimension, i++){
+                    result[i] = components[i] + other[i];
+                }
+                return result;
+
+            }
+
+            // Vector subtraction
+            Vector<T, Dimension> operator-(const Vector<T, Dimension>& other) const{
+                Vector<T, Dimension> result;
+                for(int i=0; i < Dimension, i++){
+                    result[i] = components[i] - other[i];
+                    }
+                return result;
+            }
+
+            /* Multiplication by scalar
+            Note that due to the way c++ works this will only allow for 
+            Vector * Scalar and will not allow Scalar * Vector !!!
+            This is because the operator keyword assumes that the left side opperand is 
+            an instance of the class. We get around this by overloading the * operator 
+            again outside the class definition. We can then call this function and 
+            reverse the order manually to prevent duplicate code*/
+            Vector<T, Dimension> operator*(T scalar) const {
+                Vector<T, Dimension> result;
+                for(int i=0; i< Dimension, i++){
+                    result[i] = components[i] * scalar;
+                }
+                return result;
+            }
+
+
+            // Dot product
+
+            // Cross product
 
 };
+
+    // ================================================================================ //
+    // =========================== Non-member Utility Functions ======================= //
+    // ================================================================================ //
+
+    // Multiplication by scalar (reversed)
+    template<typename T, int Dimension>
+    Vector<T, Dimension> operator*(T scalar, const Vector<T, Dimension>& vec) {
+        return vec * scalar;
+    }
+
 
 
 } // namespace vector

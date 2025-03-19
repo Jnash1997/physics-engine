@@ -14,10 +14,14 @@ namespace objects {
         float fx, fy;           // x, y components of accumulated forces
 
     public:
-        // Constructor function
+        // ======================================================================== //
+        // =============================== Constructors =========================== //
+        // ======================================================================== //
         Circle(float x, float y, float radius, float mass, bool is_static = false, float restitution = 1.0f);
 
-        // Getters
+        // ======================================================================== //
+        // ================================== Getters ============================= //
+        // ======================================================================== //
         float getX() const;
         float getY() const;
         float getRadius() const;
@@ -27,7 +31,9 @@ namespace objects {
         bool isStatic() const;
         float getRestitution() const;
 
-        // Setters
+        // ======================================================================== //
+        // ================================== Setters ============================= //
+        // ======================================================================== //
         void setPosition(float newX, float newY);
         void setVelocity(float newVx, float newVy);
         void setForce(float newFx, float newFy);

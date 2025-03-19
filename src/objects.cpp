@@ -3,11 +3,15 @@
 
 namespace objects {
 
-    // Constructor
+    // ======================================================================== //
+    // =============================== Constructors =========================== //
+    // ======================================================================== //
     Circle::Circle(float x, float y, float radius, float mass, bool is_static, float restitution) 
     : x(x), y(y), radius(radius), vx(0.0f), vy(0.0f), mass(mass), restitution(restitution), is_static(is_static), fx(0.0f), fy(0.0f) {}
 
-    // Getters
+    // ======================================================================== //
+    // ================================== Getters ============================= //
+    // ======================================================================== //
     float Circle::getX() const { return x;}
     float Circle::getY() const { return y;}
     float Circle::getRadius() const { return radius;}
@@ -17,7 +21,9 @@ namespace objects {
     bool Circle::isStatic() const { return is_static;}
     float Circle::getRestitution() const { return restitution;}
 
-    // Setters
+    // ======================================================================== //
+    // ================================== Setters ============================= //
+    // ======================================================================== //
     void Circle::setPosition(float newX, float newY) {
         x = newX;
         y = newY;
@@ -37,7 +43,9 @@ namespace objects {
         }
     }
 
-    // Update function
+    // ======================================================================== //
+    // ============================== Update Functions ======================== //
+    // ======================================================================== //
     void Circle::update(float deltaTime) {
         // calculate accelerations due to forces
         float ax = fx / mass;
