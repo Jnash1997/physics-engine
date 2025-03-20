@@ -121,8 +121,8 @@ The project development is planned in several phases:
 - [ ] Scene saving and loading capabilities
 - [ ] Real-time physics property monitoring
 
-### Phase 3: To be Defined
+### Phase 3: To Be Defined
 
 ## Feedback
 
-This project is currently in development.Suggestions and feedback are welcome.
+This project is currently in development. Suggestions and feedback are welcome.

@@ -1,6 +1,9 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+// Includes
+#include <cmath> // For math functions
+
 namespace vector{
 
     /* Create vector class with variable dimension sizing
@@ -45,7 +48,7 @@ namespace vector{
             Const prevents the function from altering the values of the input 
             array during the execution*/
             explicit Vector(const T values[Dimension]){
-                for(int i = 0; i < Dimenstion; i++){
+                for(int i = 0; i < Dimension; i++){
                     components[i] = values[i];
                 };
             };
@@ -86,7 +89,7 @@ namespace vector{
                 return components[index];
             }
 
-            /* Vector addition operator using +
+            /* Vector addition operator 
             Will return a Vector with the same dimensions and internal data type of the
             objects used in the addition.  
             `const Vector<T, Dimension>& other` allows + to take in a reference (&) to 
@@ -98,7 +101,7 @@ namespace vector{
                 // Create output vector
                 Vector<T, Dimension> result;
                 // loop to add components
-                for(int i=0; i < Dimension, i++){
+                for(int i=0; i < Dimension; i++){
                     result[i] = components[i] + other[i];
                 }
                 return result;
@@ -108,9 +111,9 @@ namespace vector{
             // Vector subtraction
             Vector<T, Dimension> operator-(const Vector<T, Dimension>& other) const{
                 Vector<T, Dimension> result;
-                for(int i=0; i < Dimension, i++){
+                for(int i=0; i < Dimension; i++){
                     result[i] = components[i] - other[i];
-                    }
+                }
                 return result;
             }
 
@@ -123,18 +126,55 @@ namespace vector{
             reverse the order manually to prevent duplicate code*/
             Vector<T, Dimension> operator*(T scalar) const {
                 Vector<T, Dimension> result;
-                for(int i=0; i< Dimension, i++){
+                for(int i=0; i< Dimension; i++){
                     result[i] = components[i] * scalar;
                 }
                 return result;
             }
 
+            // ======================================================================== //
+            // ========================== Vector Math Functions ======================= //
+            // ======================================================================== //
+
+            // Magnitude
+            
+            T magnitude() const {
+                T result = 0;
+                for(int i=0; i < Dimension; i++){
+                    result += components[i] * components[i];
+                }
+
+                result = std::sqrt(result);
+                return result;
+            }
+            
+            // Angle between 2 Vectors
+            double angle(const Vector<T, Dimension>& other) const {
+                double result;
+
+                /* this is the pointer to the current instance of the class 
+                the arrow operator (->) is used for calling a method on the object a 
+                pointer is referring to (opposed to the dot (.) operator)*/
+                result = std::acos((this->dot(other)) / (this->magnitude() * other.magnitude()));
+
+                return result;
+            }
 
             // Dot product
+            T dot(const Vector<T, Dimension>& other) const {
+                T result = 0;
+                for(int i=0; i < Dimension; i++){
+                    result += components[i] * other[i];
+                }
+                return result;
+            }
 
             // Cross product
 
-};
+
+
+
+    };
 
     // ================================================================================ //
     // =========================== Non-member Utility Functions ======================= //
