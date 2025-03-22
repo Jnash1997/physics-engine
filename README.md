@@ -107,6 +107,7 @@ The project development is planned in several phases:
 - [x] Basic circle physics implementation
 - [x] Velocity and force-based movement
 - [x] Simple collision detection and response
+- [x] Create vector class with mathematical operations
 - [ ] Implement Vector Control
 - [ ] Complex polygon shapes support
 - [ ] Advanced physics features (friction, air resistance)
