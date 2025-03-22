@@ -170,9 +170,19 @@ namespace vector{
             }
 
             // Cross product
+            Vector<T, Dimension> cross(const Vector<T, Dimension>& other) const {
+                /* static_assert creates a compile time error with the given message when the 
+                condition specified is not met static_assert is evaluated at compilation and 
+                not during runtime, saving on runtime resources.*/
+                static_assert(Dimension == 3, "Cross product is only defined for 3D vectors!");
+                // Calculation of elements
+                Vector<T, 3> result;
+                result[0] = components[1] * other[2] - components[2] * other[1];
+                result[1] = components[2] * other[0] - components[0] * other[2];
+                result[2] = components[0] * other[1] - components[1] * other[0];
 
-
-
+                return result;
+            }
 
     };
 
