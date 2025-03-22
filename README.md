@@ -108,7 +108,7 @@ The project development is planned in several phases:
 - [x] Velocity and force-based movement
 - [x] Simple collision detection and response
 - [x] Create vector class with mathematical operations
-- [ ] Implement Vector Control
+- [x] Implement Vector Control
 - [ ] Complex polygon shapes support
 - [ ] Advanced physics features (friction, air resistance)
 - [ ] Constraint-based joints and connections

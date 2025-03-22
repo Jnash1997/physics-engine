@@ -89,7 +89,7 @@ namespace vector{
                 return components[index];
             }
 
-            /* Vector addition operator 
+            /* Vector addition operators
             Will return a Vector with the same dimensions and internal data type of the
             objects used in the addition.  
             `const Vector<T, Dimension>& other` allows + to take in a reference (&) to 
@@ -97,23 +97,34 @@ namespace vector{
             vector is not edited (const).
             The const before the function implementation (within the {}) ensures the 
             initial vector cannot itself be editted*/
-            Vector<T, Dimension> operator+(const Vector<T, Dimension>& other) const{
-                // Create output vector
-                Vector<T, Dimension> result;
-                // loop to add components
-                for(int i=0; i < Dimension; i++){
-                    result[i] = components[i] + other[i];
-                }
-                return result;
 
+            Vector<T, Dimension> operator+=(const Vector<T, Dimension>& other){
+                for(int i=0; i < Dimension; i++){
+                    components[i] += other[i];
+                }
+                return *this;
+            }
+
+            Vector<T, Dimension> operator+(const Vector<T, Dimension>& other) const{
+                // Copy of the object being acted upon using the above defined constructor
+                Vector<T, Dimension> result(*this);
+                // add input vector to the copied version of the initial vector
+                result += other;
+                return result;
             }
 
             // Vector subtraction
-            Vector<T, Dimension> operator-(const Vector<T, Dimension>& other) const{
-                Vector<T, Dimension> result;
+
+            Vector<T, Dimension> operator-=(const Vector<T, Dimension>& other){
                 for(int i=0; i < Dimension; i++){
-                    result[i] = components[i] - other[i];
+                    components[i] -= other[i];
                 }
+                return *this;
+            }
+
+            Vector<T, Dimension> operator-(const Vector<T, Dimension>& other) const{
+                Vector<T, Dimension> result(*this);
+                result -= other;
                 return result;
             }
 
@@ -131,6 +142,8 @@ namespace vector{
                 }
                 return result;
             }
+
+           
 
             // ======================================================================== //
             // ========================== Vector Math Functions ======================= //
