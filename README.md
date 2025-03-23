@@ -2,7 +2,7 @@
 
 ## Overview
 
-A light weight physics engine implemented in C++, designed for educational purposes and portfolio demonstration. The engine currently supports basic circular object physics including collision detection and response.
+A light weight physics engine implemented in C++, designed for educational purposes and portfolio demonstration. The engine features a custom vector mathematics library and supports basic circular object physics including collision detection and response. This project combines fundamental physics principles with C++ to create an extensible foundation for physics-based simulations.
 
 ## Development Approach
 
@@ -10,6 +10,8 @@ Some sections of the source code for this project contain extensive inline docum
 
 ## Features
 
+- Custom template-based vector mathematics library with support for varying dimension sizes
+- Vector operations including addition, subration, multiplication, dot product, cross product, and more
 - Circle-based physics objects with customisable properties
 - Velocity and force-based movement
 - Mass and restitution handling
@@ -23,17 +25,9 @@ Basic_Physics_Engine
 ├── .vscode/
 │  ├── c_cpp_properties.json
 │  └── tasks.json
-├── build/
-│  ├── main.o
-│  └── objects.o
-├── docs/
-│   ├── api/
-│   ├── examples/
-│   └── latex/
 ├── include/
 │   ├── objects.h
 │   └── vector.h
-├── lib/
 ├── src/
 │   ├── main.cpp
 │   └── objects.cpp
@@ -54,8 +48,10 @@ Basic_Physics_Engine
 
 1. Clone the repository
 2. Navigate to the project's root directory
-3. Run make to build the project
+3. Run `make` to build the project
 4. The executible will be created in the project root
+
+The makefile includes Windows=specific commands for compatability.
 
 ## Usuage
 
@@ -63,15 +59,26 @@ Here is a basic example of creating and using a physics object:
 
 ```cpp
 #include <objects.h>
+#include <vector.h>
+#include <iostream>
 
 int main() {
-    // Create a circle with position (0,0), radius 10 and mass 1
-    objects::Circle circle(0.0f, 0.0f, 10.0f, 1.0f);
-    // Apply a force
-    circle.applyForce(1.0f, 0.0f);
+    // Create a 2D vector for position (x=0, y=1.5)
+    vector::Vector<float, 2> position(0.0f, 1.5f);
+    
+    // Create a circle with position, radius 1.5, mass 10.3, dynamic state, and restitution 7.5
+    objects::Circle circle(position, 1.5f, 10.3f, false, 7.5f);
+    
+    // Apply a force using the vector class
+    vector::Vector<float, 2> force(5.0f, 3.0f);
+    circle.applyForce(force);
     
     // Update physics (with 16ms timestep)
     circle.update(0.016f);
+    
+    // Get the position after update
+    vector::Vector<float, 2> newPosition = circle.getPosition();
+    std::cout << "New position: (" << newPosition[0] << ", " << newPosition[1] << ")" << std::endl;
     
     return 0;
 }
@@ -79,12 +86,21 @@ int main() {
 
 ## Technical Details
 
+### Vector Class
+
+The `vector` template class proivides a flexible mathematics library with:
+
+- Template support for different numeric types and dimensions
+- Multiple constructor options including default, variadic and copy constructors
+- Overloaded operators for intuitive vector arithmetic
+- Standard vector operations including magnitude, dot and cross products, angle between 2 vectors
+
 ### Circle Class
 
 The `Circle` class represents a physical 2D circle object with properties including:
 
-- Position (x,y)
-- Velocity components
+- Position as a 2D vector
+- Velocity as a 2D vector
 - Mass
 - Radius
 - Restitution coefficient
