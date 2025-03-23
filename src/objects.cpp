@@ -8,7 +8,7 @@ namespace objects {
     // =============================== Constructors =========================== //
     // ======================================================================== //
     Circle::Circle(vector::Vector<float, 2> pos, float radius, float mass, bool is_static, float restitution) 
-    : position(pos), radius(radius), velocity(), mass(mass), restitution(restitution), is_static(is_static), force() {}
+    : position(pos), radius(radius), mass(mass), is_static(is_static), restitution(restitution), velocity(), force() {}
 
     // ======================================================================== //
     // ================================== Getters ============================= //

@@ -8,12 +8,12 @@ namespace objects {
     class Circle {
     private:
         vector::Vector<float, 2> position;  // position vector
-        vector::Vector<float, 2> velocity;  // velocity vector
-        vector::Vector<float, 2>  force;    // accumulated forces vector
         float radius;                       // radius of the circle
         float mass;                         // mass of the circle
-        float restitution;                  // elasticity
         bool is_static;                     // static flag (true if immovable)
+        float restitution;                  // elasticity
+        vector::Vector<float, 2> velocity;  // velocity vector
+        vector::Vector<float, 2>  force;    // accumulated forces vector
 
     public:
         // ======================================================================== //
