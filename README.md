@@ -123,10 +123,22 @@ The project development is planned in several phases:
 - [x] Basic circle physics implementation
 - [x] Velocity and force-based movement
 - [x] Simple collision detection and response
+  - [x] Circle to Circle collision detection
+  - [ ] Optimize spatial partitioning for collision detection
 - [x] Create vector class with mathematical operations
+  - [x] Template support for different dimensions and data types
+  - [x] Overload standard operators for basic arithmetic
+  - [x] Add advanced vector operations (dot product, cross product)
+  - [ ] Vector normalisation and projection functions
 - [x] Implement Vector Control
+  - [x] Integration with circle class
+  - [x] Vector-based force application
+  - [ ] Vector-based impulse control
 - [ ] Complex polygon shapes support
-- [ ] Advanced physics features (friction, air resistance)
+- [ ] Advanced physics features
+  - [ ] Friction
+  - [ ] Air resistance
+  - [ ] Gravity
 - [ ] Constraint-based joints and connections
 
 ### Phase 2: Python GUI Integration (Planned)
